@@ -14,8 +14,8 @@ session_enam = os.getenv('session_enam')
 bot_token = '8018544160:AAGQm1RCcGcIn9D-31ouDugf8eDiGRRePdE'
 api_id = '25294817'  # Get from https://my.telegram.org/
 api_hash = '3d511c09129f344ec1c931e72b2d5bc2'  # Get from https://my.telegram.org/
-phone_number = '+91 7389491337'  # Your phone number for login
-
+phone_number = '+91 7389491335'  # Your phone number for login
+session_name = 'anon'
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -132,4 +132,3 @@ async def main():
 
 import asyncio
 asyncio.run(main())
-# this is changed (session_name = 'anon')
