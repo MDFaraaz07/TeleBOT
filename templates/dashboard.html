@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Telegram Bot Task Dashboard</h1>
+
+        <!-- Add New Task -->
+        <h2>Add New Task</h2>
+        <form action="/add_task" method="post" class="mb-4">
+            <div class="mb-3">
+                <label for="label" class="form-label">Task Label</label>
+                <input type="text" class="form-control" id="label" name="label" required>
+            </div>
+            <div class="mb-3">
+                <label for="source_group_ids" class="form-label">Source Group IDs (comma-separated)</label>
+                <input type="text" class="form-control" id="source_group_ids" name="source_group_ids" required>
+            </div>
+            <div class="mb-3">
+                <label for="target_group_ids" class="form-label">Target Group IDs (comma-separated)</label>
+                <input type="text" class="form-control" id="target_group_ids" name="target_group_ids" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+        <!-- Display Current Tasks -->
+        <h2>Current Tasks</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Index</th> <!-- Added Index for clarity -->
+                    <th scope="col">Label</th>
+                    <th scope="col">Source Group IDs</th>
+                    <th scope="col">Target Group IDs</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ loop.index0 }}</td> <!-- Use loop.index0 for zero-based indexing -->
+                    <td>{{ task['label'] }}</td>
+                    <td>{{ task['source_group_ids'] }}</td>
+                    <td>{{ task['target_group_ids'] }}</td>
+                    <td>
+                        <a href="/delete_task/{{ loop.index0 }}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
